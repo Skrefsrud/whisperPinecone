@@ -5,9 +5,9 @@ load_dotenv()
 
 model = whisper.load_model("small.en")
 
-PATH = "preTranscript/motivation.mp3"
+PATH = "preTranscript/weightloss.mp3"
 
 result = model.transcribe(PATH)
 
-f = open("postTranscript/motivation.txt", "a")
+f = open("postTranscript/weightloss.txt", "a")
 f.write(result["text"])

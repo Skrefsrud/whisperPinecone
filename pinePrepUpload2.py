@@ -22,6 +22,7 @@ directory = 'postTranscript'
 def load_docs(directory):
   loader = DirectoryLoader(directory)
   documents = loader.load()
+  
   return documents
 
 documents = load_docs(directory)
@@ -49,9 +50,10 @@ pinecone.init(
 
 index_name = "huberman-test"
 
-#index = Pinecone.from_documents(docs, embeddings, index_name=index_name)
-index = Pinecone.from_existing_index(index_name, embeddings)
+index = Pinecone.from_documents(docs, embeddings, index_name=index_name)
+#index = Pinecone.from_existing_index(index_name, embeddings)
 
+"""
 def get_similiar_docs(query, k=2, score=False):
   if score:
     similar_docs = index.similarity_search_with_score(query, k=k)
@@ -74,3 +76,4 @@ def get_answer(query):
 query = "How do i become motivated?"
 answer = get_answer(query)
 print(answer)
+"""
