@@ -1,16 +1,12 @@
 from langchain.text_splitter import RecursiveCharacterTextSplitter
-import pandas as pd
-from langchain import OpenAI
+
 import openai
 from dotenv import load_dotenv
 from langchain.vectorstores.pinecone import Pinecone
 from langchain.embeddings.openai import OpenAIEmbeddings
 import pinecone
 import os
-from datasets import load_dataset
-import random
-import itertools
-#import streamlit as st, pinecone
+
 
 load_dotenv()
 pine_API_KEY = os.getenv("PINECONE_API_KEY")
@@ -43,6 +39,7 @@ def createEmbedding(chunks):
     embeds = [record['embedding'] for record in response['data']]
     
     
+    
     # initialize connection to pinecone (get API key at app.pinecone.io)
     pinecone.init(
         api_key=pine_API_KEY,
@@ -50,12 +47,12 @@ def createEmbedding(chunks):
     )
     index = pinecone.Index('huberman-bot')
     i = 0
-    for x in chunks:
-        index.upsert(vectors=[{f'id': 'vec{i}', 'values': embeds[i], 'metadata':{'topic': 'motivation'}}])
+    vectors = []
+    for embed in embeds:
+       vectors.append((f'id-{i}', embeds[i], {"genre": "motivation"}))       
+       i += 1
+    index.upsert(vectors, namespace="example-namespace")
     
-    
-    
-  
 
 
 
@@ -64,12 +61,4 @@ if __name__ == "__main__":
         text = f.read()
         
     chunks = textChunking(text)
-
     createEmbedding(chunks)
-
-
-
-#st.subheader('Generative Q&A with LangChain & Pinecone')
-#query = st.text_input("Enter your query")
-#if st.button("Submit"):
-    #print("hey")

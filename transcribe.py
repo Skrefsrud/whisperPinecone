@@ -1,6 +1,5 @@
 import whisper
 from dotenv import load_dotenv
-fp16=False
 
 load_dotenv()
 
