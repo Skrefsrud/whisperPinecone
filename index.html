@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Chat Interface</title>
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="messages">
+        <div class="message user1">
+          <span class="sender">Huberman</span>
+          <div class="content">
+            Hello! Is there something I can help you with today?
+          </div>
+        </div>
+
+        <!-- Add more messages here -->
+      </div>
+
+      <div class="input-container">
+        <input
+          type="text"
+          id="message-input"
+          placeholder="Type your message..."
+        />
+        <input type="submit" value="Send" onclick="sendMessage()" />
+      </div>
+    </div>
+  </body>
+</html>

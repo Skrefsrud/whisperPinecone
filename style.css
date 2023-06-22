@@ -1,0 +1,59 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 20px;
+}
+
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  border: 1px solid #ccc;
+  padding: 20px;
+}
+
+.message {
+  margin-bottom: 10px;
+}
+
+.message .sender {
+  font-weight: bold;
+  color: #1c7cd6;
+}
+
+.message .timestamp {
+  font-size: 0.8em;
+  color: #999;
+  margin-left: 10px;
+}
+
+.message .content {
+  margin-top: 5px;
+}
+
+.message.user1 .sender {
+  color: #1c7cd6;
+}
+
+.message.user2 .sender {
+  color: #d61c1c;
+}
+
+.input-container {
+  margin-top: 20px;
+}
+
+.input-container input[type="text"] {
+  width: 80%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.input-container input[type="submit"] {
+  padding: 10px 20px;
+  border-radius: 4px;
+  background-color: #1c7cd6;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
